@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Config
+
+clusters:
+- cluster:
+    server: https://192.168.99.128:8443
+    certificate-authority: /root/ca.crt
+  name: minic
+
+contexts:
+- context:
+    cluster: minic
+    user: shubham
+  name: lwc
+current-context: lwc
+users:
+- name: shubham
+  user:
+    client-key: /root/client.key
+    client-certificate: /root/client.crt
