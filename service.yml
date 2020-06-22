@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-php-expose
+  labels:
+    work: website-exposing
+spec:
+  selector:
+    work: website-hosting
+  type: NodePort  
+  ports:
+    - nodePort: 30000
+      port: 80
+      targetPort: 80

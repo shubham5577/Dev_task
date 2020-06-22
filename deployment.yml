@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webphp-site
+  labels:
+    work: website-hosting
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      work: website-hosting
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      name: website-pod
+      labels:
+        work: website-hosting
+    spec:
+      containers:
+      -  image: techboutique/webphp
+         name: webphp-site
+         ports:
+         -  containerPort: 80
+            name: webphp-site
